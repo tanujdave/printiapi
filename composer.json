@@ -5,6 +5,7 @@
     "keywords": [],
     "homepage": "http://printi.com.br",
     "license": "Apache-2.0",
+    "minimum-stability": "stable",
     "require": {
         "symfony/framework-bundle": "^3.3",
         "doctrine/common": "^2.7.1",
