@@ -1,0 +1,26 @@
+{
+    "name": "printi/printi-api",
+    "type": "library",
+    "description": "Printi common api wrapper",
+    "keywords": [],
+    "homepage": "http://printi.com.br",
+    "license": "Apache-2.0",
+    "require": {
+        "php": "^7.1",
+        "symfony/framework-bundle": "^3.3",
+        "doctrine/common": "^2.7.1",
+        "guzzlehttp/guzzle": "~6.0",
+        "guzzlehttp/psr7": "^1.2",
+        "kevinrob/guzzle-cache-middleware": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "PrintiApi\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
+}
