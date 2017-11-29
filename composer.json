@@ -1,11 +1,15 @@
 {
-    "name": "tanujdave/printi-api",
+    "name": "tanujdave/printiapi",
     "type": "library",
     "description": "Printi common api wrapper",
-    "keywords": [],
-    "homepage": "http://printi.com.br",
-    "license": "Apache-2.0",
-    "version": "1.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tanuj Dave",
+            "email": "tanuj.dave@printi.com.br",
+            "role": "developer"
+        }
+    ],
     "require": {
         "symfony/framework-bundle": "^3.3",
         "doctrine/common": "^2.7.1",
@@ -16,11 +20,6 @@
     "autoload": {
         "psr-4": {
             "PrintiApi\\": "src/"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.x-dev"
         }
     }
 }
