@@ -1,11 +1,10 @@
 {
-    "name": "printi/printi-api",
-    "type": "library",
-    "description": "Printi common api wrapper",
-    "keywords": [],
+    "name": "printi/printi-test",
+    "description": "This library allows you to quickly and easily send emails through SendGrid using PHP.",
+    "version": "6.0.0",
     "homepage": "http://printi.com.br",
-    "license": "Apache-2.0",
-    "version": "1.0",
+    "license": "MIT",
+    "keywords": ["php"],
     "require": {
         "symfony/framework-bundle": "^3.3",
         "doctrine/common": "^2.7.1",
@@ -13,14 +12,12 @@
         "guzzlehttp/psr7": "^1.2",
         "kevinrob/guzzle-cache-middleware": "^1.2"
     },
-    "autoload": {
-        "psr-4": {
-            "PrintiApi\\": "src/"
-        }
+    "require-dev": {
+        "phpunit/phpunit": "4.*",
+        "squizlabs/php_codesniffer": "2.*"
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.x-dev"
-        }
-    }
+    "replace": {
+        "sendgrid/sendgrid-php": "*"
+    },
+    "type": "library"
 }
