@@ -1,38 +1,25 @@
 {
     "name": "tanujdave/printiapi",
     "type": "library",
+    "description": "Printi common api wrapper",
     "license": "MIT",
-    "description": "Rest client to make GET, POST, PUT, DELETE, PATCH, etc calls.",
-    "keywords": [
-        "http",
-        "curl",
-        "rest",
-        "requests"
-    ],
     "authors": [
         {
-            "name": "Unay Santisteban",
-            "email": "usantisteban@othercode.es",
-            "homepage": "http://othercode.es/",
+            "name": "Tanuj Dave",
+            "email": "tanuj.dave@printi.com.br",
             "role": "developer"
         }
     ],
     "require": {
-        "php": ">=5.5",
-        "ext-curl": "*"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "*"
+        "symfony/framework-bundle": "^3.3",
+        "doctrine/common": "^2.7.1",
+        "guzzlehttp/guzzle": "~6.0",
+        "guzzlehttp/psr7": "^1.2",
+        "kevinrob/guzzle-cache-middleware": "^1.2"
     },
     "autoload": {
         "psr-4": {
-            "OtherCode\\Rest\\": "src/"
+            "PrintiApi\\": "src/"
         }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "minimum-stability": "dev"
+    }
 }
