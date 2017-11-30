@@ -12,14 +12,11 @@
         }
     ],
     "require": {
-        "doctrine/common": "^2.7.1",
-        "guzzlehttp/guzzle": "~6.0",
-        "guzzlehttp/psr7": "^1.2",
-        "kevinrob/guzzle-cache-middleware": "^1.2"
+        "guzzlehttp/guzzle": "~6.0"
     },
     "autoload": {
         "psr-4": {
-            "PrintiApi\\": "src/"
+            "PrintiApi\\": "src/Api"
         }
     }
 }

@@ -2,8 +2,8 @@
 
 namespace PrintiApi;
 
+use PrintiApi\Api\BaseApi;
 
-use PrintiApi\BaseApi\BaseApi;
 
 class PrintiApi extends BaseApi
 {
