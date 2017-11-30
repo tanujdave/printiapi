@@ -3,7 +3,6 @@
     "type": "library",
     "description": "Printi common api wrapper",
     "license": "MIT",
-    "version": "1.0",
     "authors": [
         {
             "name": "Tanuj Dave",
