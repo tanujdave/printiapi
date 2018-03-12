@@ -1,0 +1,12 @@
+parameters:
+    priority:
+        transitions:
+            send_to_prepress: low
+            prepress_reject: high
+            prepress_reject_failed: high
+            prepress_approve: high
+            send_to_production: high
+            waiting_for_upload: high
+            new_upload: low
+            cancel: high
+            finish: high
