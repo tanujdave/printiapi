@@ -2,38 +2,13 @@
 
 namespace Printi\NotifyBundle;
 
-use Symfony\Component\Dotenv\Dotenv;
-
 class BaseNotify
 {
+    /** @var array $config */
+    protected $config;
 
-    private $env = 'dev';
-
-    public function __construct()
+    public function __construct($config)
     {
-        $this->setEnvironment();
+        $this->config = $config;
     }
-
-    protected function setEnvironment()
-    {
-        try {
-            $dotenv = new Dotenv();
-            $dotenv->load(__DIR__.'/../../../../../.env');
-            $env = getenv('APP_ENV');
-        } catch (\Exception $e) {
-            if (0 == $e->getCode()) {
-                $errCode = 400;
-            } else {
-                $errCode = $e->getCode();
-            }
-            throw new \Exception($e->getMessage(), $errCode);
-        }
-        $this->env = getenv('APP_ENV');
-    }
-
-    protected function getEnvironment()
-    {
-        return $this->env;
-    }
-
 }

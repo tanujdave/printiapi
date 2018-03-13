@@ -5,17 +5,18 @@ namespace Printi\NotifyBundle;
 class Notify extends BaseNotify
 {
 
-    public function __construct()
+    public function __construct(array $config)
     {
-        parent::__construct();
+        parent::__construct($config);
     }
 
-    public static function notifyOnTransition(string $transition, array $body)
+    public function notifyOnTransition(string $transition, array $body)
     {
+        var_dump($this->config);
 
     }
 
-    public static function getNotificationPriority(string $type, string $key)
+    public function getNotificationPriority(string $type, string $key)
     {
 
     }
