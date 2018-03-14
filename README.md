@@ -1,16 +1,10 @@
-ApiClient, PHP HTTP client
+Notify - Priority Messaging
 ==========================
 
-ApiClient is a PHP HTTP client that makes it easy to send HTTP requests and
-trivial to integrate with web services.
+Notify is messaging service for Omega2. which responsible for sending message
+to Alpha or AWS sns based on priority.
 
-- Simple interface for building query strings, POST requests, uploading JSON data,
-  etc...
-- Abstracts away the underlying HTTP transport, allowing you to write
-  environment and transport agnostic code; i.e., no hard dependency on cURL,
-  PHP streams, sockets, or non-blocking event loops.
-
-## Installing ApiClient
+## Installing Notify as Bundle
 
 The recommended way to install ApiClient is through
 [Composer](http://getcomposer.org).
@@ -20,62 +14,70 @@ The recommended way to install ApiClient is through
 curl -sS https://getcomposer.org/installer | php
 ```
 
-Next, run the Composer command to install the latest stable version of Guzzle:
+Next, run the Composer command to install the latest stable version of Notify:
 
 ```bash
-php composer.phar require guzzlehttp/guzzle
+php composer.phar require printi/notify
 ```
 
-Next, run the Composer command to install the latest stable version of ApiClient:
-
-```bash
-php composer.phar require printi/api-client
-```
-
-You can then later update ApiClient using composer:
+You can then later update notify using composer:
 
  ```bash
-composer.phar update
+composer.phar update printi/notify
 ```
 
 ## User Guide
 
-We are having few parameters which are configured for different environments viz. local, dev and prod in config directory for different projects. 
+
+Basic notify configuration:
 
 For eg:
 ```yaml
-parameters:
-    api_client:
-        connection_timeout:   2.0
-        allowed_methods:      ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
-
-        project_key:
-            host:     "http://project-domain.com/"
-            headers:
-                #You can mention key-value pair here,
-                # internal code will replace "_" with "-" in key
-                token:  ThisIsYourSecretTokenForApiAuthorization
+notify:
+    transition:
+        send_to_prepress: high
+        prepress_reject: low
+        prepress_reject_failed: high
+        prepress_approve: high
+        send_to_production: high
+        waiting_for_upload: high
+        new_upload: low
+        cancel: high
+        finish: high
 ``` 
+This configuration is not mandatory for our application. we can override above configuration 
+by creating ``notify.yaml`` yaml file under ``/config/packages`` folder.
 
-In above yaml file, ``api_client``, ``connection_timeout``, ``allowed_methods``, ``host``, ``headers`` are keywords which are to be used as it is. ApiClient reads those values based on those keys.
-``your_project_key`` key are the project related parameters, If you need to include parameters for your project please make a request.
 
-You can make use of this plugin in following way:
+## How to use
 
-For Eg:
+We can inject Notify as a service into our application.
+
+for eg:
 ```php
-$env = $container->get('kernel')->getEnvironment();     //local, dev or prod
-$apiClient = new ApiClient('project_key', $env);
-return $apiClient->get(
-    '/v1/products',             // Route endpoint
-    [],                         // url parameters to be replaced in route endpoint
-    ['page'=> 1],               // query parameters
-    ['x-total-count' => 'Yes']  // headers other than default set in parameters.yaml
-);
-``` 
 
-In Project settings, ``host`` is mandatory, failing which the ApiClient will throw error. You just need to mention Base URI/Host name in ``host``.
-``headers`` is optional. Api Client passes all headers parameters in config by default with every request.
-Also you can pass custom headers in get(), post() etc request as mentioned in example above.
+namespace App;
+use Printi\NotifyBundle\Notify;
 
-Note: ApiClient always applies 'accept' = 'application/json' and 'content-type' = 'application/json' in headers by default.
+class HelloClass {
+
+    private $notify;
+    
+    public function __construct(Notify $notify)
+    {
+        $this->notify = $notify;
+    }
+    
+    public function onTransitionUpdate()
+    {
+        $message = [
+            "order_item_id" => 11111,
+            "transition"    => 'prepress_reject',
+            "reference"     => null,
+            "status_id"     => 50,
+            "version"       => 2,
+        ];
+        $this->notify->notifyOnTransition('prepress_reject', $message);
+    }
+}
+```
