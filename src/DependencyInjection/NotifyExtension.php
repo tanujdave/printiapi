@@ -21,14 +21,6 @@ class NotifyExtension extends Extension
             new FileLocator(__DIR__.'/../Resources/config')
         );
         $loader->load('services.xml');
-
-//        $config = $this->processConfiguration(new Configuration(), $configs);
-
-//        var_dump($configs);
-
-        $container->setParameter('notify', []);
-
-        echo '111';
-//        var_dump($config);
+        $container->setParameter('notify', $configs[0]);
     }
 }
