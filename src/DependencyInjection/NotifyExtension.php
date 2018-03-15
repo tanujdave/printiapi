@@ -26,7 +26,7 @@ class NotifyExtension extends Extension
 
 //        var_dump($configs);
 
-        $container->setParameter('notify', $configs[0]);
+        $container->setParameter('notify', []);
 
         echo '111';
 //        var_dump($config);
