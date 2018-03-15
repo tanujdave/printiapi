@@ -22,21 +22,13 @@ class NotifyExtension extends Extension
         );
         $loader->load('services.xml');
 
-        $config = $this->processConfiguration(new Configuration(), $configs);
-        $this->mergeConfigParameter($container, 'notify', $config);
+//        $config = $this->processConfiguration(new Configuration(), $configs);
+
+//        var_dump($configs);
+
+//        $container->setParameter('notify', $configs[0]);
+
+        echo '111';
+//        var_dump($config);
     }
-
-
-    protected function mergeConfigParameter(ContainerBuilder $container, $key, $configs)
-    {
-        if (!is_array($configs)) {
-            $container->setParameter($key, $configs);
-            return;
-        }
-
-        foreach ($configs as $configKey => $config) {
-            $this->mergeConfigParameter($container, "{$key}.{$configKey}", $config);
-        }
-    }
-
 }
