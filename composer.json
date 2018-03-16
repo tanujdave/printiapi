@@ -5,7 +5,7 @@
   "keywords": ["messaging", "notify", "transition", "api"],
   "homepage": "https://github.com/Printi/notify",
   "license": "MIT",
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "authors": [
     {
       "name": "Tanuj Dave",
