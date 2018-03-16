@@ -16,7 +16,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->arrayNode('transition')
                     ->useAttributeAsKey('name')
-                    ->prototype('scalar')->end()
+                    ->prototype('variable')->end()
                 ->end()
             ->end();
 
