@@ -1,12 +1,11 @@
 {
   "name": "printi/notify",
-  "vendor/package": "1.0.0",
   "type": "symfony-bundle",
   "description": "Notify is messaging service for Omega2. which responsible for sending message to Alpha or AWS sns based on priority.",
   "keywords": ["messaging", "notify", "transition", "api"],
   "homepage": "https://github.com/Printi/notify",
   "license": "MIT",
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "authors": [
     {
       "name": "Tanuj Dave",
